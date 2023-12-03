@@ -10,11 +10,10 @@ const PopularMoviesList = ({ imgUrl, popularMovies, searchQuery }) => {
           {skeletonCards.map((_, index) => (
             <div
               key={index}
-              className="h-[300px] w-[250px] bg-gray-700 rounded-lg animate-pulse"
+              className="h-[300px] w-[250px] animate-pulse rounded-lg bg-gray-700"
             ></div>
           ))}
         </>
-
       ) : (
         <>
           {popularMovies.map((movie, i) => (

@@ -74,9 +74,7 @@ const ImageSlider = ({
       </>
     );
   } else {
-    return (
-      <div className="h-[500px] w-screen bg-gray-700"></div>
-    )
+    return <div className="h-[500px] w-screen bg-gray-700"></div>;
   }
 };
 

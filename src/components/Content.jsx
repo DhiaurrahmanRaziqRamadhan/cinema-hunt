@@ -11,9 +11,8 @@ const Content = ({
   gotoSlides,
   popularMovies,
   search,
-  searchQuery
+  searchQuery,
 }) => {
-
   return (
     <div className="mt-[72px]">
       <div className="w-max-screen">
@@ -27,10 +26,14 @@ const Content = ({
         />
       </div>
       <div className="flex items-center justify-center py-8">
-        <SearchInput search={search}/>
+        <SearchInput search={search} />
       </div>
       <div className="Movie-container mx-auto flex flex-wrap justify-evenly gap-y-5 ">
-        <PopularMoviesList imgUrl={imgUrl} popularMovies={popularMovies} searchQuery={searchQuery}/>
+        <PopularMoviesList
+          imgUrl={imgUrl}
+          popularMovies={popularMovies}
+          searchQuery={searchQuery}
+        />
       </div>
     </div>
   );

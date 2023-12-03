@@ -55,24 +55,21 @@ const MovieDetail = ({ imgUrl }) => {
                   <IoArrowBack size={40} />
                   <p className="text-xl font-semibold">Kembali</p>
                 </Link>
-                <div className="h-[500px] w-[333.33px] rounded-lg bg-gray-700">
-                </div>
+                <div className="h-[500px] w-[333.33px] rounded-lg bg-gray-700"></div>
               </div>
               <div className="flex-1">
-                <div className="grid gap-6 w-96 xl:w-auto px-4">
+                <div className="grid w-96 gap-6 px-4 xl:w-auto">
                   <div className="space-y-3">
-                    <div className="h-4 xl:w-full rounded-full bg-gray-700"></div>
-                    <div className="h-4 xl:w-full rounded-full bg-gray-700"></div>
+                    <div className="h-4 rounded-full bg-gray-700 xl:w-full"></div>
+                    <div className="h-4 rounded-full bg-gray-700 xl:w-full"></div>
                   </div>
                   <div className="space-y-3">
-                    <div className="h-4 xl:w-full rounded-full bg-gray-700"></div>
-                    <div className="h-4 xl:w-full rounded-full bg-gray-700"></div>
+                    <div className="h-4 rounded-full bg-gray-700 xl:w-full"></div>
+                    <div className="h-4 rounded-full bg-gray-700 xl:w-full"></div>
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center gap-4">
-                      <div className="h-4 w-4 p-4 rounded-full bg-gray-700">
-                        
-                      </div>
+                      <div className="h-4 w-4 rounded-full bg-gray-700 p-4"></div>
                       <div className="h-4 w-full rounded-full bg-gray-700"></div>
                     </div>
                   </div>
