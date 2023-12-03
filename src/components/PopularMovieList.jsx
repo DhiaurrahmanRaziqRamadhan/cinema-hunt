@@ -31,7 +31,7 @@ const PopularMoviesList = ({ imgUrl, popularMovies, searchQuery }) => {
                 }}
                 className="h-[300px] w-[250px] bg-cover bg-center"
               >
-                <div className="absolute bg-gradient-to-b from-transparent to-black/50 duration-300 md:opacity-0 xl:opacity-0 xl:hover:opacity-100">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 duration-300 md:opacity-0 xl:opacity-0 xl:hover:opacity-100">
                   <div className="flex h-full flex-col justify-end px-2 py-4 text-white">
                     <div className="Movie-title text-xl font-bold">
                       {movie.title}
