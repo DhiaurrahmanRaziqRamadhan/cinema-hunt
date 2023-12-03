@@ -1,22 +1,56 @@
-const PopularMoviesList = ({imgUrl, popularMovies}) => {
-  return popularMovies.map((movie, i) => {
-    return(
-      <div className="Movie-wrapper" key={i}>
-        <div className="w-[250px] h-[300px] rounded-lg overflow-hidden shadow-lg">
-          <div style={{ backgroundImage: `url(${imgUrl}/${movie.poster_path})` }}
-          className='w-full h-full bg-center bg-cover'>
-            <div className="w-full h-full bg-gradient-to-b from-transparent to-black/50 relative">
-              <div className="flex flex-col justify-end h-full text-white px-2 py-4">
-                <div className="Movie-title text-xl font-bold">{movie.title}</div>
-                <div className="Movie-date">{movie.release_date}</div>
-                <div className="Movie-rate"><i className="fa-solid fa-star text-yellow-500 mr-1"></i>{movie.vote_average}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  })
-}
+import { FaStar } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
-export default PopularMoviesList
+const PopularMoviesList = ({ imgUrl, popularMovies, searchQuery }) => {
+  const skeletonCards = new Array(20).fill(null);
+  return (
+    <>
+      {popularMovies.length === 0 ? (
+        <>
+          {skeletonCards.map((_, index) => (
+            <div
+              key={index}
+              className="h-[300px] w-[250px] bg-gray-700 rounded-lg animate-pulse"
+            ></div>
+          ))}
+        </>
+
+      ) : (
+        <>
+          {popularMovies.map((movie, i) => (
+            <Link
+              to={{
+                pathname: `/cinema-hunt/movie-detail/${movie.id}`,
+                search: `?q=${searchQuery}`, // Tambahkan query parameter q di sini
+              }}
+              className="Movie-wrapper relative overflow-hidden rounded-lg"
+              key={i}
+            >
+              <div
+                style={{
+                  backgroundImage: `url(${imgUrl}/${movie.poster_path})`,
+                }}
+                className="h-[300px] w-[250px] bg-cover bg-center"
+              >
+                <div className="absolute bg-gradient-to-b from-transparent to-black/50 duration-300 md:opacity-0 xl:opacity-0 xl:hover:opacity-100">
+                  <div className="flex h-full flex-col justify-end px-2 py-4 text-white">
+                    <div className="Movie-title text-xl font-bold">
+                      {movie.title}
+                    </div>
+                    <div className="Movie-date">{movie.release_date}</div>
+                    <div className="Movie-rate flex items-center">
+                      <FaStar size={20} className="text-yellow-500" />
+                      {movie.vote_average}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </>
+      )}
+    </>
+  );
+};
+
+export default PopularMoviesList;

@@ -1,46 +1,83 @@
-import {BsChevronLeft, BsChevronRight} from "react-icons/bs"
-import {RxDotFilled} from "react-icons/rx"
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { RxDotFilled } from "react-icons/rx";
+import { FaStar } from "react-icons/fa6";
 
-const ImageSlider = ({ currentIndex, posterSlider, prevSlides, nextSlides, gotoSlides}) => {
-  const imgUrl = import.meta.env.VITE_IMGURL
-  // console.log(`link: ${imgUrl}/${poster[currentIndex]}`)
+const ImageSlider = ({
+  currentIndex,
+  posterSlider,
+  prevSlides,
+  nextSlides,
+  gotoSlides,
+}) => {
+  const imgUrl = import.meta.env.VITE_IMGURL;
 
-  if(posterSlider.length > 0){
+  if (posterSlider.length > 0) {
     return (
       <>
-        <div style={{ backgroundImage: `url(${imgUrl}/${posterSlider[currentIndex][4]})` }} className='w-full h-full bg-center bg-cover duration-500'>
-          <div className="w-full h-full bg-gradient-to-b from-transparent to-black/50 relative text-white px-16 pb-80 xl:px-44 xl:py-64">
-            <div className="h-full w-full flex flex-col justify-end">
-              <div className="text-2xl xl:text-4xl font-bold">{posterSlider[currentIndex][0]}</div>
-              <div className="overflow-hidden line-clamp-6 xl:text-xl w-full">{posterSlider[currentIndex][1]}</div>
-              <div className="xl:text-lg">{posterSlider[currentIndex][2]}</div>
-              <div className="xl:text-lg"><i className="fa-solid fa-star text-yellow-500 mr-1"></i>{posterSlider[currentIndex][3]}</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute top-[50%] xl:-translate-x-0 translate-y-[50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-          <BsChevronLeft onClick={prevSlides} size={30}/>
-        </div>
-        <div className="absolute top-[50%] -translate-x-0 translate-y-[50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-          <BsChevronRight onClick={nextSlides} size={30}/>
-        </div>
-
-        <div className="absolute bottom-0 left-[50%] -translate-x-[50%]">
-          <div className="flex justify-center items-center">
-            {posterSlider.map((slide, slideIndex) => (
-              <div 
-                key={slideIndex}
-                onClick={()=>{gotoSlides(slideIndex)}}
-                className={`cursor-pointer ${slideIndex === currentIndex ? 'text-white text-4xl ' : 'text-white text-2xl opacity-80'}`}>
-                <RxDotFilled/>
+        <div
+          style={{
+            backgroundImage: `url(${imgUrl}/${posterSlider[currentIndex][4]})`,
+          }}
+          className="h-[500px] w-screen bg-cover bg-center text-white duration-500 xl:h-screen"
+        >
+          <div className="flex h-full flex-col justify-around gap-3 bg-gradient-to-b from-transparent to-black/50 px-4 pt-8">
+            <div className="flex items-center justify-between gap-4">
+              <div className="hidden h-fit cursor-pointer rounded-full bg-black/50 p-2 text-2xl xl:block">
+                <BsChevronLeft onClick={prevSlides} size={30} />
               </div>
-            ))}
+              <div>
+                <div className="text-2xl font-bold xl:text-4xl">
+                  {posterSlider[currentIndex][0]}
+                </div>
+                <div className="line-clamp-6 w-full overflow-hidden xl:text-xl">
+                  {posterSlider[currentIndex][1]}
+                </div>
+                <div className="xl:text-lg">
+                  {posterSlider[currentIndex][2]}
+                </div>
+                <div className="flex items-center gap-2 xl:text-lg">
+                  <FaStar size={26} className="text-yellow-500" />
+                  {posterSlider[currentIndex][3]}
+                </div>
+              </div>
+              <div className="hidden h-fit cursor-pointer rounded-full bg-black/50 p-2 text-2xl xl:block">
+                <BsChevronRight onClick={nextSlides} size={30} />
+              </div>
+            </div>
+            <div className="flex items-center justify-between px-4 xl:hidden">
+              <div className="cursor-pointer rounded-full bg-black/50 p-2 text-2xl">
+                <BsChevronLeft onClick={prevSlides} size={30} />
+              </div>
+              <div className="cursor-pointer rounded-full bg-black/50 p-2 text-2xl">
+                <BsChevronRight onClick={nextSlides} size={30} />
+              </div>
+            </div>
+            <div className="flex items-center justify-center">
+              {posterSlider?.map((slide, slideIndex) => (
+                <div
+                  key={slideIndex}
+                  onClick={() => {
+                    gotoSlides(slideIndex);
+                  }}
+                  className={`cursor-pointer ${
+                    slideIndex === currentIndex
+                      ? "text-4xl text-white "
+                      : "text-2xl text-white opacity-80"
+                  }`}
+                >
+                  <RxDotFilled />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </>
     );
+  } else {
+    return (
+      <div className="h-[500px] w-screen bg-gray-700"></div>
+    )
   }
 };
 
-export default ImageSlider
+export default ImageSlider;

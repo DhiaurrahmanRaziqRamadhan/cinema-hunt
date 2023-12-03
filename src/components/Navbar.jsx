@@ -1,18 +1,17 @@
-import SearchInput from "./SearchInput"
+import { Link } from "react-router-dom";
 
-const Navbar = ({search}) => {
+const Navbar = () => {
   return (
-    <header className="bg-slate-900 fixed w-full top-0 left-0 z-50">
-      <div className="text-white flex justify-between items-center px-5 py-2" >
+    <header className="fixed left-0 top-0 z-50 w-full border-b border-slate-600 bg-slate-900/70 backdrop-blur-md">
+      <div className="flex h-[72px] items-center justify-between px-5 py-2 text-white">
         <div>
-          <p className="text-based md:text-xl xl:text-2xl font-semibold">Cinema Hunt</p>
-        </div>
-        <div className="py-2">
-          <SearchInput search={search}/>
+          <p className="text-based font-semibold md:text-xl xl:text-2xl">
+            <Link to="/cinema-hunt/">Cinema Hunt</Link>
+          </p>
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
