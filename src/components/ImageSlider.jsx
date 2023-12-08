@@ -18,15 +18,15 @@ const ImageSlider = ({
           style={{
             backgroundImage: `url(${imgUrl}/${posterSlider[currentIndex][4]})`,
           }}
-          className="h-[500px] w-screen bg-cover bg-center text-white duration-500 xl:h-screen"
+          className="h-[500px] bg-cover bg-center text-white duration-500 xl:h-screen"
         >
-          <div className="flex h-full flex-col justify-around gap-3 bg-gradient-to-b from-transparent to-black/50 px-4 pt-8">
-            <div className="flex items-center justify-between gap-4">
-              <div className="hidden h-fit cursor-pointer rounded-full bg-black/50 p-2 text-2xl xl:block">
+          <div className="flex h-full flex-col justify-around gap-3 bg-gradient-to-b from-transparent to-black/50 pt-8">
+            <div className="flex pt-24 justify-between gap-4 h-96 px-4">
+              <div className="hidden h-fit cursor-pointer rounded-full bg-black/50 p-2 text-2xl xl:block self-center">
                 <BsChevronLeft onClick={prevSlides} size={30} />
               </div>
-              <div>
-                <div className="text-2xl font-bold xl:text-4xl">
+              <div className="flex flex-col w-[1000px] gap-0">
+                <div className="text-2xl font-bold xl:text-4xl h-10">
                   {posterSlider[currentIndex][0]}
                 </div>
                 <div className="line-clamp-6 w-full overflow-hidden xl:text-xl">
@@ -40,7 +40,7 @@ const ImageSlider = ({
                   {posterSlider[currentIndex][3]}
                 </div>
               </div>
-              <div className="hidden h-fit cursor-pointer rounded-full bg-black/50 p-2 text-2xl xl:block">
+              <div className="hidden h-fit cursor-pointer rounded-full bg-black/50 p-2 text-2xl xl:block self-center">
                 <BsChevronRight onClick={nextSlides} size={30} />
               </div>
             </div>
